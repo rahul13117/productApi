@@ -50,7 +50,7 @@ public class ProductController {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updated|OK"),
 			@ApiResponse(code = 401, message = "not authorized!"), @ApiResponse(code = 403, message = "forbidden!!!"),
 			@ApiResponse(code = 404, message = "not found!!!") })
-	public ResponseEntity<Product> replaceEmployee(@RequestBody Product newproductPrice,
+	public ResponseEntity<Product> updateProduct(@RequestBody Product newproductPrice,
 			@PathVariable String id) {
  
 		return new ResponseEntity<>(productService.updateProductprice(id,newproductPrice), HttpStatus.OK);
