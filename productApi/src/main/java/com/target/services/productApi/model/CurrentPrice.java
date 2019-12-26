@@ -2,7 +2,7 @@ package com.target.services.productApi.model;
 
 public class CurrentPrice {
 	
-	private double value;
+	private Double value;
 	private String CurrencyCode;
 	
 	public CurrentPrice() {

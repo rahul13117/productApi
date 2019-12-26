@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.target.services.productApi.model.Product;
 import com.target.services.productApi.service.ProductService;
 
+import io.netty.util.internal.StringUtil;
 import io.swagger.annotations.Api;
 
 
@@ -27,10 +28,12 @@ public class ProductController {
 	@GetMapping(value = "{id}")
 	public ResponseEntity<Product> getProductInfo(@PathVariable("id") String productId){
 		Product product = productService.getProduct(productId);
-		  if(product==null) {
+		
+		  if(product.getCurrent_price() == null && StringUtil.isNullOrEmpty(product.getName())) {
 		
 			throw new ProductNotfoundException(productId);
 		  }
+		  System.out.println("2");
 		return new ResponseEntity<>(productService.getProduct(productId), HttpStatus.OK);
 	
 	

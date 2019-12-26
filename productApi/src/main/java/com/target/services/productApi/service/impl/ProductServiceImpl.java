@@ -51,6 +51,6 @@ public class ProductServiceImpl implements ProductService {
 		if (!StringUtil.isNullOrEmpty(productName)) {
 			return productName;
 		}
-		return "";
+		return null;
 	}
 }
