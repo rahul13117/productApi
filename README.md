@@ -30,7 +30,7 @@ java -jar target/productApi.jar
   1 .  Retrive  Product By id 
   
   Get :   
-         http://localhost:8090/v1/products/13860428 
+         http://localhost:8090/v1/product/13860428 
          Accept: application/json
          Content-Type: application/json
 
