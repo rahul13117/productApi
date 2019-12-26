@@ -5,15 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.google.common.base.Predicates;
 import com.target.services.productApi.model.CurrentPrice;
@@ -60,10 +55,11 @@ public class MyReatilProductApiApplication implements CommandLineRunner {
    @Bean
 	public Docket api() {
 
-		return new Docket(DocumentationType.SWAGGER_2).select()
-
-				.apis(RequestHandlerSelectors.basePackage("springbootex.controller"))
-			    .paths(Predicates.not(PathSelectors.regex("test"))).build();
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.target.services.productApi.web"))
+			    .paths(PathSelectors.any())
+			    .build();
 
 	}
 

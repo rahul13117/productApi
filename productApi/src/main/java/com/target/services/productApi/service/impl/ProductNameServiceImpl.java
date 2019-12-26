@@ -1,6 +1,7 @@
 package com.target.services.productApi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,7 +15,13 @@ public class ProductNameServiceImpl implements ProductNameService{
 
 	
 	 @Autowired
-	    RestTemplate restTemplate;
+	  RestTemplate restTemplate;
+	 
+	 @Value("${baseurl}")
+	 String baseUrl;
+	 
+	 @Value("${queryparams}")
+	 String queryparams;
 	 
 	@Override
 	// JSON Node for more Reablility 
@@ -22,14 +29,10 @@ public class ProductNameServiceImpl implements ProductNameService{
 	public String getProductName(String id) {
 		// TODO Auto-generated method stub
 		try {
-			final String uri = "https://redsky.target.com/v2/pdp/tcin/"
-					+ id+"?"
-					+ "excludes=circle_offers,available_to_promise_network,deep_red_labels,"
-					+ "rating_and_review_reviews,taxonomy,price,promotion,bulk_ship,rating_and_review_revie%20ws,"
-					+ "rating_and_review_statistics,question_answer_statistics";
+			final String uri = baseUrl+id+queryparams;
 			ExternalApiProductName result = restTemplate.getForObject(uri, ExternalApiProductName.class);
 		     
-		    System.out.println(result.getProduct().getItem().getProduct_description().getTitle());
+		    
 			return result.getProduct().getItem().getProduct_description().getTitle();
 		} catch (Exception e) {
 			return "";

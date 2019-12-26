@@ -11,6 +11,8 @@ import com.target.services.productApi.model.ProductPrice;
 
 public interface ProductRepository extends CrudRepository<ProductPrice, String> {
 
+	
+   
    
 
 }

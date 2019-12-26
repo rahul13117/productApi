@@ -14,7 +14,6 @@ import com.target.services.productApi.service.ProductService;
 
 import io.netty.util.internal.StringUtil;
 
-
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -52,5 +51,21 @@ public class ProductServiceImpl implements ProductService {
 			return productName;
 		}
 		return null;
+	}
+
+	@Override
+	public Product updateProductprice(String id, Product newProduct) {
+		// TODO Auto-generated method stub
+
+		Optional<ProductPrice> oldProductPrice = productRepository.findById(id);
+		if (oldProductPrice.isPresent()) {
+			oldProductPrice.get().setCurrentPrice(new CurrentPrice(newProduct.getCurrent_price().getValue(),
+					newProduct.getCurrent_price().getCurrencyCode()));
+			productRepository.save(oldProductPrice.get());
+			newProduct.setCurrent_price(oldProductPrice.get().getCurrentPrice());
+			return newProduct;
+		}
+		return newProduct;
+
 	}
 }
