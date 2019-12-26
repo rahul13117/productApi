@@ -3,6 +3,7 @@ Spring Boot Get and Update  Product Rest API Example
 Tutorial: Get  an Update Product with Spring Boot
 
 Steps to Setup
+
 1. Clone the repository
 
 git clone https://github.com/rahul13117/productApi.git
@@ -27,17 +28,30 @@ java -jar target/productApi.jar
  REST APIs Endpoints
 
   1 .  Retrive  Product By id 
-  Get /todo
-  Accept: application/json
-  Content-Type: application/json
+  
+  Get :   
+         http://localhost:8090/v1/products/13860428 
+         Accept: application/json
+         Content-Type: application/json
 
-  http://localhost:8090/v1/products/13860428
+  
+  
+    {  
+    "id": "13860428", 
+    "name": "The Big Lebowski (Blu-ray)",
+    "current_price": {
+        "value": 22000.45,
+         "currencyCode": "USD"
+         }
+     }
 
 
   2. Update Product Price into DataStore
 
-  PUT /todo/{Note Id}
+  PUT :  /v1/updateProduct/{id}
+  
   Accept: application/json
+  
   Content-Type: application/json
 
     {
