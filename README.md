@@ -21,3 +21,35 @@ You may also package the application in the form of a jar and then run the jar f
 
 mvn clean package
 java -jar target/productApi.jar
+
+
+
+REST APIs Endpoints
+
+1 .  Retrive  Product By id 
+Get /todo
+Accept: application/json
+Content-Type: application/json
+
+http://localhost:8090/v1/products/13860428
+
+
+2. Update Product Price into DataStore
+
+PUT /todo/{Note Id}
+Accept: application/json
+Content-Type: application/json
+
+{
+"id": "13860428",
+"name": "The Big Lebowski (Blu-ray)",
+"current_price": {
+"value": 22000.45,
+"currencyCode": "USD"
+}
+}
+
+
+To view Swagger 2 API docs
+http://localhost:8090/swagger-ui.html#/Product-api
+
