@@ -29,6 +29,10 @@ public class ProductController {
 
 	@Autowired
 	ProductRepository repository;
+	
+	/*
+	 * Get Product By Product Id 
+	 */
 
 	@GetMapping(value = "/product/{id}")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Suceess|OK"),
@@ -46,11 +50,15 @@ public class ProductController {
 
 	}
 
+	
+	/*
+	 * Update Product Price  By Product Id 
+	 */
 	@PutMapping("/updateProdcut/{id}")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Updated|OK"),
 			@ApiResponse(code = 401, message = "not authorized!"), @ApiResponse(code = 403, message = "forbidden!!!"),
 			@ApiResponse(code = 404, message = "not found!!!") })
-	public ResponseEntity<Product> updateProduct(@RequestBody Product newproductPrice,
+	public ResponseEntity<Product> updateProductPrice(@RequestBody Product newproductPrice,
 			@PathVariable String id) {
  
 		return new ResponseEntity<>(productService.updateProductprice(id,newproductPrice), HttpStatus.OK);

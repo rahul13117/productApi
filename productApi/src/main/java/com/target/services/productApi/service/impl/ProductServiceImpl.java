@@ -23,6 +23,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductRepository productRepository;
 
+	/*
+	 *  Get Product by Product Id 
+	 */
 	@Override
 	public Product getProduct(String id) {
 		Product product = new Product();
@@ -34,6 +37,9 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	/*
+	 *  Get Product price from redis
+	 */
 	private CurrentPrice getProductPrice(String id) {
 
 		Optional<ProductPrice> optCustomer = productRepository.findById(id);
@@ -44,6 +50,9 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	/*
+	 * Get Product Name by Product Id from External API
+	 */
 	private String getProductName(String id) {
 
 		String productName = productNameService.getProductName(id);
@@ -53,6 +62,10 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
+	
+	/*
+	 *   If Product exist then  Update Product Price by Product Id into Redis(NoSql Data Store) 
+	 */
 	@Override
 	public Product updateProductprice(String id, Product newProduct) {
 		// TODO Auto-generated method stub

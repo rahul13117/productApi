@@ -1,5 +1,7 @@
 package com.target.services.productApi.model;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -27,4 +29,28 @@ public class Product {
 		this.current_price = current_price;
 	}
 
+	
+	@Override
+	public int hashCode() {
+		
+		return new HashCodeBuilder()
+				   .append(id)
+				   .toHashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(this == obj) {
+			return true;
+		}
+		if(obj == null) {
+			return false;
+		}
+		if(getClass() != obj.getClass())
+			return false;
+	
+	Product other =(Product) obj;
+	return id == other.id;
+	}
 }
