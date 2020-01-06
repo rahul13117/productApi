@@ -7,12 +7,14 @@ Steps to Setup
 1. Clone the repository
 
 git clone https://github.com/rahul13117/productApi.git
+
+
 2. Specify the file uploads directory
 
 Open src/main/resources/application.properties file and change the property for Redis Host 
 
 
-2. Run the app using maven
+3. Run the app using maven
 
 cd spring-boot-file-myretail-api
 mvn spring-boot:run
