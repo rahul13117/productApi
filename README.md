@@ -30,7 +30,7 @@ java -jar target/productApi.jar
   1 .  Retrive  Product By id 
   
   Get :   
-         http://localhost:8090/v1/product/13860428 
+         http://localhost:8080/v1/product/13860428 
          Accept: application/json
          Content-Type: application/json
 
@@ -66,5 +66,5 @@ java -jar target/productApi.jar
 
 To view Swagger 2 API docs
 
-http://localhost:8090/swagger-ui.html#/Product-api
+http://localhost:8080/swagger-ui.html#/Product-api
 
