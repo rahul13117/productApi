@@ -60,8 +60,18 @@ public class ProductController {
 			@ApiResponse(code = 404, message = "not found!!!") })
 	public ResponseEntity<Product> updateProductPrice(@RequestBody Product newproductPrice,
 			@PathVariable String id) {
- 
 		return new ResponseEntity<>(productService.updateProductprice(id,newproductPrice), HttpStatus.OK);
 	}
+	
+	/*
+	 * 
+	 * Price Promotion : Sale 
+	 * PrductPromotion 
+	 *      productId 
+	 *      Date startDate
+	 *      Date endDate;
+	 *      CurrentPrice currentPrice
+	 * 
+	 */
 
 }

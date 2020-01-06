@@ -78,6 +78,13 @@ public class ProductServiceImpl implements ProductService {
 			newProduct.setCurrent_price(oldProductPrice.get().getCurrentPrice());
 			return newProduct;
 		}
+//			else {
+//			// This Code if Product is not there then Store Redis 
+//			ProductPrice productPrice = new ProductPrice();
+//			productPrice.setCurrentPrice(newProduct.getCurrent_price());
+//			productPrice.setProductId(newProduct.getId());
+//			productRepository.save(productPrice);
+//		}
 		return newProduct;
 
 	}
